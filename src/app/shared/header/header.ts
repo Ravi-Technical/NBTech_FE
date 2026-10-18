@@ -179,7 +179,8 @@ export class Header {
         },
       ],
     },
-    { id: 'pricing', label: 'Privacy & Policy', route: '/pricing' },
+    { id: 'blog', label: 'Blog', route: '/blog' },
+    { id: 'career', label: 'Careers', route: '/career' },
     { id: 'company', label: 'Contact Us', route: '/company' },
   ];
 

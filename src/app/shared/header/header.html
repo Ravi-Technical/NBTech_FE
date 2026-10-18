@@ -1,8 +1,14 @@
 <header class="header">
   <div class="header__inner">
     <!-- Brand -->
-    <a class="brand" routerLink="/" [attr.aria-label]="brand + ' home'" (click)="closeAll()">
-      <img src="brand_logo.png" alt="NBTech Solution Logo" class="brand__logo" />
+    <a class="logo brand" routerLink="/" [attr.aria-label]="brand + ' home'" (click)="closeAll()">
+      <img src="Brand_logo.png" alt="NBTech Solution Logo" class="brand__logo" />
+      <span class="logo__divider" aria-hidden="true"></span>
+
+      <span class="logo__text">
+        <span class="logo__name">NB<span class="logo__name-accent">Tech</span></span>
+        <span class="logo__sub">Solution</span>
+      </span>
     </a>
 
     <!-- Desktop navigation -->
@@ -64,7 +70,7 @@
         </button>
         <!-- burger button stays as it is -->
       </div>
-      <button class="btn btn--primary" routerLink="/demo" (click)="openDemo()">Book a Demo</button>
+      <button class="btn btn--primary" routerLink="/demo" (click)="openDemo()">Quick Enquiry</button>
 
       <button type="button" class="burger" [class.is-open]="mobileOpen()" [attr.aria-expanded]="mobileOpen()"
         aria-controls="mobile-menu" [attr.aria-label]="mobileOpen() ? 'Close menu' : 'Open menu'"

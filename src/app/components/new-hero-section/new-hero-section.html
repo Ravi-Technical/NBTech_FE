@@ -1,0 +1,102 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <!-- Left: message -->
+    <div class="hero__copy">
+      <p class="eyebrow">
+        @for (item of categories; track item; let last = $last) {
+          <span>{{ item }}</span>
+          @if (!last) {
+            <i class="eyebrow__sep"></i>
+          }
+        }
+      </p>
+
+      <h1 id="hero-title" class="hero__title">
+        Reliable IT for
+        <span class="hero__title-accent">growing businesses</span>
+      </h1>
+
+      <p class="hero__lead">Cloud, security, software and 24/7 support from one team.</p>
+      <p class="hero__text">
+        One accountable partner for your infrastructure, your applications and everyday IT, so
+        your people can focus on the business.
+      </p>
+
+      <div class="hero__actions">
+        <button type="button" class="btn btn--primary" (click)="openDemo()">
+          Quick Enquiry
+          <mat-icon aria-hidden="true">arrow_forward</mat-icon>
+        </button>
+        <a class="btn btn--outline" routerLink="/services">View our services</a>
+      </div>
+    </div>
+
+    <!-- Right: services panel -->
+    <aside class="panel" aria-label="What we deliver">
+      <span class="panel__deco panel__deco--a" aria-hidden="true"></span>
+      <span class="panel__deco panel__deco--b" aria-hidden="true"></span>
+      <span class="panel__deco panel__deco--c" aria-hidden="true"></span>
+
+      <div class="badge badge--online">
+        <span class="badge__dot" aria-hidden="true"></span>
+        <span>
+          <strong>Support desk online</strong>
+          <small>Available 24/7</small>
+        </span>
+      </div>
+
+      <h2 class="panel__title">What we deliver</h2>
+
+      <ul class="panel__list">
+        @for (service of services; track service.route) {
+          <li>
+            <a class="service" [routerLink]="service.route">
+              <span class="service__icon">
+                <mat-icon aria-hidden="true">{{ service.icon }}</mat-icon>
+              </span>
+              <span class="service__text">
+                <span class="service__name">{{ service.title }}</span>
+                <span class="service__desc">{{ service.description }}</span>
+              </span>
+              <mat-icon class="service__arrow" aria-hidden="true">arrow_forward</mat-icon>
+            </a>
+          </li>
+        }
+      </ul>
+
+      <div class="badge badge--secure">
+        <mat-icon aria-hidden="true">shield</mat-icon>
+        <strong>Secure by design</strong>
+      </div>
+    </aside>
+  </div>
+
+  <svg class="hero__wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 40 C 240 70, 520 90, 760 90 L1440 90 L1440 30 C 1250 60, 1100 80, 900 90 L0 90 Z" />
+  </svg>
+</section>
+
+<!-- Stats + trusted by -->
+<section class="proof">
+  <div class="container">
+    <dl class="stats">
+      @for (stat of stats; track stat.label) {
+        <div class="stats__item">
+          <dt class="stats__value">{{ stat.value }}</dt>
+          <dd class="stats__label">{{ stat.label }}</dd>
+        </div>
+      }
+    </dl>
+
+    <div class="trusted">
+      <p class="trusted__label">Trusted by growing teams across industries</p>
+      <ul class="trusted__logos">
+        @for (slot of clientSlots; track slot) {
+          <li class="trusted__slot">[Client logo]</li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

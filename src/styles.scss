@@ -44,16 +44,16 @@ html[data-theme='light'] {
   // Backgrounds
   --color-bg: #ffffff;              // page background
   --color-bg-alt: #f6f7fd;          // alternate sections, subtle wash
-  --color-surface: #ffffff;         // cards, dialogs, header
+  --color-surface: #061132;         // cards, dialogs, header
   --color-surface-raised: #ffffff;  // dropdowns, popovers
-  --color-hover: #f1f3fb;           // hover background on rows, menu items
+  --color-hover: #1a2852;           // hover background on rows, menu items
 
   // Borders
   --color-border: #d9dcf5;
   --color-border-strong: #b8bde6;   // inputs, outlined buttons
 
   // Text
-  --color-text: #0f1b2d;
+  --color-text: #fff;
   --color-text-muted: #536179;
   --color-text-on-primary: #ffffff;
 
@@ -87,7 +87,7 @@ html[data-theme='dark'] {
   // Backgrounds
   --color-bg: #0d1020;
   --color-bg-alt: #12162b;
-  --color-surface: #171a31;
+  --color-surface: #061132;
   --color-surface-raised: #1e2240;
   --color-hover: #232849;
 

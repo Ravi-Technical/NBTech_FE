@@ -42,6 +42,72 @@ button {
     cursor: pointer;
 }
 
+// New Logo css
+.logo {
+  --logo-size: 44px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--logo-size) * 0.28);
+  text-decoration: none;
+  line-height: 1;
+
+  &:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+.logo__icon {
+  display: block;
+  height: var(--logo-size);
+  width: auto;
+}
+
+.logo__divider {
+  width: 2px;
+  height: calc(var(--logo-size) * 0.9);
+  background: currentColor;
+  opacity: 0.35;
+}
+
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--logo-size) * 0.1);
+}
+
+.logo__name {
+  font-size: calc(var(--logo-size) * 0.62);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.logo__name-accent {
+  color: #2f7dff;
+}
+
+.logo__sub {
+  font-size: calc(var(--logo-size) * 0.2);
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+}
+
+/* Colors per background */
+.logo--dark {
+  color: #ffffff;
+
+  .logo__name-accent {
+    color: #4d94ff;
+  }
+}
+
+.logo--light {
+  color: #0b1648;
+}
+
 .icon-btn {
     display: inline-flex;
     align-items: center;
@@ -81,7 +147,7 @@ button {
 }
 
 a.brand img {
-    width: 55%;
+    width: 23%;
 }
 
 a.brand {
@@ -93,7 +159,7 @@ a.brand {
     background: var(--hdr-surface);
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
-    box-shadow: 10px 1px 12px #ddd;
+    // box-shadow: 10px 1px 12px #ddd;
 }
 
 :host(.is-scrolled) .header {
@@ -155,7 +221,7 @@ a.brand {
     height: 40px;
     padding: 0 12px;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--hdr-ink);
     transition: color 0.15s, background-color 0.15s;
@@ -270,9 +336,9 @@ a.brand {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: 40px;
     padding: 0 18px;
-    border-radius: 40px;
+    border-radius: 10px;
     font-size: 0.8rem;
     font-weight: 400;
     white-space: nowrap;
