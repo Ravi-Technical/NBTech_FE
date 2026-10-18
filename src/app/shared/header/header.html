@@ -1,0 +1,126 @@
+<header class="header">
+  <div class="header__inner">
+    <!-- Brand -->
+    <a class="brand" routerLink="/" [attr.aria-label]="brand + ' home'" (click)="closeAll()">
+      <img src="brand_logo.png" alt="NBTech Solution Logo" class="brand__logo" />
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav__list">
+        @for (item of nav; track item.id) {
+        <li class="nav__item" (mouseenter)="item.groups && openPanel(item.id)"
+          (mouseleave)="item.groups && closePanel(item.id)" (focusout)="item.groups && onFocusOut($event, item.id)">
+          @if (item.groups) {
+          <button type="button" class="nav__trigger" [class.is-open]="openMenu() === item.id"
+            [attr.aria-expanded]="openMenu() === item.id" [attr.aria-controls]="'panel-' + item.id"
+            (click)="toggleMenu(item.id)">
+            {{ item.label }}
+            <svg class="chevron" viewBox="0 0 12 12" aria-hidden="true">
+              <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+
+          @if (openMenu() === item.id) {
+          <div class="panel" [id]="'panel-' + item.id">
+            <div class="panel__grid" [class.panel__grid--single]="item.groups.length === 1">
+              @for (group of item.groups; track group.title) {
+              <section class="panel__group">
+                <h3 class="panel__title">{{ group.title }}</h3>
+                <ul class="panel__links">
+                  @for (link of group.links; track link.route) {
+                  <li>
+                    <a class="panel__link" [routerLink]="link.route" (click)="closeAll()">
+                      <span class="panel__label">{{ link.label }}</span>
+                      <span class="panel__desc">{{ link.description }}</span>
+                    </a>
+                  </li>
+                  }
+                </ul>
+              </section>
+              }
+            </div>
+          </div>
+          }
+          } @else {
+          <a class="nav__link" [routerLink]="item.route" routerLinkActive="is-active" ariaCurrentWhenActive="page">
+            {{ item.label }}
+          </a>
+          }
+        </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Actions -->
+    <div class="actions">
+      <div class="actions">
+        <button type="button" class="icon-btn" (click)="themeService.toggle()"
+          [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'">
+          <mat-icon aria-hidden="true">
+            {{ themeService.theme() === 'dark' ? 'light_mode' : 'dark_mode' }}
+          </mat-icon>
+        </button>
+        <!-- burger button stays as it is -->
+      </div>
+      <button class="btn btn--primary" routerLink="/demo" (click)="openDemo()">Book a Demo</button>
+
+      <button type="button" class="burger" [class.is-open]="mobileOpen()" [attr.aria-expanded]="mobileOpen()"
+        aria-controls="mobile-menu" [attr.aria-label]="mobileOpen() ? 'Close menu' : 'Open menu'"
+        (click)="toggleMobile()">
+        <span class="burger__bar"></span>
+        <span class="burger__bar"></span>
+        <span class="burger__bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  @if (mobileOpen()) {
+  <div class="drawer" id="mobile-menu">
+    <nav class="drawer__nav" aria-label="Mobile">
+      <ul class="drawer__list">
+        @for (item of nav; track item.id) {
+        <li class="drawer__item">
+          @if (item.groups) {
+          <button type="button" class="drawer__trigger" [attr.aria-expanded]="mobileExpanded() === item.id"
+            [attr.aria-controls]="'drawer-' + item.id" (click)="toggleMobileSection(item.id)">
+            {{ item.label }}
+            <svg class="chevron" [class.is-flipped]="mobileExpanded() === item.id" viewBox="0 0 12 12"
+              aria-hidden="true">
+              <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          @if (mobileExpanded() === item.id) {
+          <div class="drawer__sub" [id]="'drawer-' + item.id">
+            @for (group of item.groups; track group.title) {
+            <h3 class="drawer__group-title">{{ group.title }}</h3>
+            <ul>
+              @for (link of group.links; track link.route) {
+              <li>
+                <a class="drawer__sublink" [routerLink]="link.route" (click)="closeAll()">
+                  {{ link.label }}
+                </a>
+              </li>
+              }
+            </ul>
+            }
+          </div>
+          }
+          } @else {
+          <a class="drawer__link" [routerLink]="item.route" (click)="closeAll()">{{ item.label }}</a>
+          }
+        </li>
+        }
+      </ul>
+
+      <div class="drawer__actions">
+        <a class="btn btn--outline btn--block" routerLink="/login" (click)="closeAll()">Sign in</a>
+        <button class="btn btn--primary btn--block" routerLink="/demo" (click)="openDemo()">Book a Demo</button>
+      </div>
+    </nav>
+  </div>
+  }
+</header>

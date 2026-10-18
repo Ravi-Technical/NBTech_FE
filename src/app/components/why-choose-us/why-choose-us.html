@@ -1,0 +1,44 @@
+<section class="why-choose-section" aria-labelledby="why-choose-title">
+  <div class="why-choose-container">
+    <!-- Header -->
+    <header class="section-header">
+      <h2 id="why-choose-title" class="section-title">{{ sectionTitle }}</h2>
+      <p class="section-subtitle">{{ sectionSubtitle }}</p>
+    </header>
+
+    <!-- Cards Grid -->
+    <div class="features-grid">
+      @for (feature of features; track feature.id) {
+        <article class="feature-card">
+          <!-- Icon Box matching the reference design -->
+          <div
+            class="feature-icon"
+            [style.background-color]="feature.iconBg"
+            [style.box-shadow]="'0 10px 22px ' + feature.iconShadow"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon-svg"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10" fill="currentColor" fill-opacity="0.2" stroke="none" />
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="#ffffff" stroke="#ffffff" stroke-width="1.5" />
+            </svg>
+          </div>
+
+          <!-- Feature Title -->
+          <h3 class="feature-title">{{ feature.title }}</h3>
+
+          <!-- Feature Description -->
+          <p class="feature-desc">{{ feature.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+

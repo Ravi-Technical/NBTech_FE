@@ -1,0 +1,459 @@
+:host {
+    // Local aliases -> global theme tokens (defined in styles.scss)
+    --hdr-ink: var(--color-text);
+    --hdr-slate: var(--color-text-muted);
+    --hdr-line: var(--color-border);
+    --hdr-surface: var(--color-surface);
+    --hdr-raised: var(--color-surface-raised);
+    --hdr-wash: var(--color-hover);
+    --hdr-accent: var(--color-primary);              // text, icons, active states
+    --hdr-solid: var(--color-primary-solid);         // button fill
+    --hdr-solid-hover: var(--color-primary-solid-hover);
+    --hdr-focus: var(--color-focus-ring);
+    --hdr-height: 68px;
+
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    color: var(--hdr-ink);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    color: var(--hdr-ink);
+    transition: background-color 0.15s;
+
+    &:hover {
+        background: var(--hdr-wash);
+    }
+}
+
+:is(a, button):focus-visible {
+    outline: 2px solid var(--hdr-focus);
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+    position: absolute;
+    left: 12px;
+    top: -48px;
+    padding: 10px 14px;
+    background: var(--hdr-ink);
+    color: var(--color-bg);
+    border-radius: 6px;
+    z-index: 200;
+    transition: top 0.15s;
+
+    &:focus {
+        top: 12px;
+    }
+}
+
+a.brand img {
+    width: 55%;
+}
+
+a.brand {
+    width: 20%;
+}
+
+/* ---------- Bar ---------- */
+.header {
+    background: var(--hdr-surface);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+:host(.is-scrolled) .header {
+    border-bottom-color: var(--hdr-line);
+    box-shadow: var(--shadow-md);
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    max-width: 1366px;
+    height: var(--hdr-height);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ---------- Brand ---------- */
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.brand__mark {
+    width: 30px;
+    height: 30px;
+    color: var(--hdr-accent);
+}
+
+.brand__name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* ---------- Desktop nav ---------- */
+.nav {
+    flex: 1;
+    display: none;
+}
+
+.nav__list {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.nav__item {
+    position: relative;
+}
+
+.nav__link,
+.nav__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--hdr-ink);
+    transition: color 0.15s, background-color 0.15s;
+
+    &:hover,
+    &.is-open,
+    &.is-active {
+        color: var(--hdr-ink);
+        background: var(--hdr-wash);
+    }
+}
+
+.nav__link.is-active {
+    box-shadow: inset 0 -2px 0 var(--hdr-accent);
+    border-radius: 8px 8px 0 0;
+}
+
+.chevron {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s;
+
+    &.is-flipped {
+        transform: rotate(180deg);
+    }
+}
+
+.nav__trigger.is-open .chevron {
+    transform: rotate(180deg);
+}
+
+/* ---------- Dropdown panel ---------- */
+.panel {
+    position: absolute;
+    top: 100%;
+    left: -12px;
+    padding-top: 10px; // hover bridge so the panel stays open
+    z-index: 10;
+}
+
+.panel__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 8px 24px;
+    width: max-content;
+    max-width: 640px;
+    padding: 20px;
+    background: var(--hdr-raised);
+    border: 1px solid var(--hdr-line);
+    border-radius: 14px;
+    box-shadow: var(--shadow-lg);
+    animation: panel-in 0.14s ease-out;
+}
+
+.panel__grid--single {
+    grid-template-columns: minmax(280px, 1fr);
+}
+
+.panel__title {
+    margin: 0 0 8px 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--hdr-slate);
+}
+
+.panel__link {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.15s;
+
+    &:hover {
+        background: var(--hdr-wash);
+    }
+
+    &:hover .panel__label {
+        color: var(--hdr-accent);
+    }
+}
+
+.panel__label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.15s;
+}
+
+.panel__desc {
+    display: block;
+    margin-top: 2px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--hdr-slate);
+}
+
+@keyframes panel-in {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+}
+
+/* ---------- Actions / buttons ---------- */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn--primary {
+    background: var(--hdr-solid);
+    color: var(--color-text-on-primary);
+    transition: 0.2s ease;
+
+    &:hover {
+        background: var(--hdr-solid-hover);
+    }
+}
+
+button.btn.btn--primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn--text {
+    display: none;
+    color: var(--hdr-ink);
+
+    &:hover {
+        background: var(--hdr-wash);
+    }
+}
+
+.btn--outline {
+    border: 1px solid var(--color-border-strong);
+
+    &:hover {
+        background: var(--hdr-wash);
+    }
+}
+
+.btn--block {
+    width: 100%;
+    height: 46px;
+}
+
+/* ---------- Burger ---------- */
+.burger {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 0 9px;
+    border-radius: 8px;
+
+    &:hover {
+        background: var(--hdr-wash);
+    }
+}
+
+.burger__bar {
+    display: block;
+    height: 2px;
+    background: var(--hdr-ink);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.burger.is-open {
+    .burger__bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .burger__bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger__bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+}
+
+/* ---------- Mobile drawer ---------- */
+.drawer {
+    position: fixed;
+    inset: var(--hdr-height) 0 0 0;
+    overflow-y: auto;
+    background: var(--hdr-surface);
+    border-top: 1px solid var(--hdr-line);
+    animation: drawer-in 0.18s ease-out;
+}
+
+.drawer__nav {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 8px 24px 32px;
+}
+
+.drawer__item {
+    border-bottom: 1px solid var(--hdr-line);
+}
+
+.drawer__link,
+.drawer__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.drawer__sub {
+    padding: 0 0 16px;
+}
+
+.drawer__group-title {
+    margin: 12px 0 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--hdr-slate);
+}
+
+.drawer__sublink {
+    display: block;
+    padding: 10px 0;
+    color: var(--hdr-slate);
+
+    &:hover {
+        color: var(--hdr-accent);
+    }
+}
+
+.drawer__actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+@keyframes drawer-in {
+    from {
+        opacity: 0;
+    }
+}
+
+/* ---------- Responsive ---------- */
+@media (min-width: 960px) {
+    .nav {
+        display: block;
+    }
+
+    .btn--text {
+        display: inline-flex;
+    }
+
+    .burger,
+    .drawer {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    a.brand {
+        width: 50%;
+    }
+
+    .header__inner {
+        padding: 0 16px;
+        gap: 12px;
+    }
+
+    .actions .btn--primary {
+        padding: 0 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

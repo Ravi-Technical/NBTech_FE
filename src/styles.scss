@@ -1,1 +1,184 @@
-/* You can add global styles to this file, and also import other style files */
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bs-font-sans-serif: 'Poppins', sans-serif;
+  --bs-body-font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  height: 100%;
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: ('Poppins', sans-serif),
+    density: 0,
+  ));
+}
+
+.demo-modal-panel {
+  --mat-dialog-container-shape: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Theme hook (dark / light)
+// The ThemeService sets <html data-theme="light|dark">.
+// Nothing below changes other components yet. When you build the full dark
+// mode later, put the dark values inside this selector.
+// ---------------------------------------------------------------------------
+ // ---------------------------------------------------------------------------
+// Theme tokens
+// Light is the default (also used on the server and before the attribute is set).
+// ---------------------------------------------------------------------------
+:root,
+html[data-theme='light'] {
+  // Backgrounds
+  --color-bg: #ffffff;              // page background
+  --color-bg-alt: #f6f7fd;          // alternate sections, subtle wash
+  --color-surface: #ffffff;         // cards, dialogs, header
+  --color-surface-raised: #ffffff;  // dropdowns, popovers
+  --color-hover: #f1f3fb;           // hover background on rows, menu items
+
+  // Borders
+  --color-border: #d9dcf5;
+  --color-border-strong: #b8bde6;   // inputs, outlined buttons
+
+  // Text
+  --color-text: #0f1b2d;
+  --color-text-muted: #536179;
+  --color-text-on-primary: #ffffff;
+
+  // Primary
+  --color-primary: #3d2fe0;         // links, icons, focus, outlines
+  --color-primary-solid: #3d2fe0;   // button fill
+  --color-primary-solid-hover: #2f23b8;
+  --color-primary-soft: #ecebff;    // tinted backgrounds, badges
+
+  // Status
+  --color-success: #167a4d;
+  --color-success-soft: #e6f6ee;
+  --color-danger: #b3261e;
+  --color-danger-soft: #fdecec;
+  --color-warning: #9a5b00;
+  --color-warning-soft: #fff4e0;
+
+  // Effects
+  --color-focus-ring: #3d2fe0;
+  --color-overlay: rgba(15, 27, 45, 0.45);
+  --shadow-sm: 0 1px 2px rgba(15, 27, 45, 0.08);
+  --shadow-md: 0 6px 20px -12px rgba(15, 27, 45, 0.25);
+  --shadow-lg: 0 24px 48px -20px rgba(15, 27, 45, 0.3);
+
+  // Hero decoration
+  --hero-circle-1: linear-gradient(160deg, #ece6ff, #8fbaff);
+  --hero-circle-2: linear-gradient(160deg, #b9c4ff, #efeaff);
+}
+
+html[data-theme='dark'] {
+  // Backgrounds
+  --color-bg: #0d1020;
+  --color-bg-alt: #12162b;
+  --color-surface: #171a31;
+  --color-surface-raised: #1e2240;
+  --color-hover: #232849;
+
+  // Borders
+  --color-border: #2a2f52;
+  --color-border-strong: #3d4373;
+
+  // Text
+  --color-text: #eef0ff;
+  --color-text-muted: #a9b0c6;
+  --color-text-on-primary: #ffffff;
+
+  // Primary
+  --color-primary: #9d95ff;         // lighter so links stay readable on dark
+  --color-primary-solid: #5b4ef0;   // button fill, white text stays readable
+  --color-primary-solid-hover: #4a3ddb;
+  --color-primary-soft: #26254f;
+
+  // Status
+  --color-success: #3ecf8e;
+  --color-success-soft: #123226;
+  --color-danger: #ff8a80;
+  --color-danger-soft: #3a1818;
+  --color-warning: #fbbf24;
+  --color-warning-soft: #3a2c0f;
+
+  // Effects
+  --color-focus-ring: #9d95ff;
+  --color-overlay: rgba(0, 0, 0, 0.65);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 20px -12px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 24px 48px -20px rgba(0, 0, 0, 0.8);
+
+  // Hero decoration
+  --hero-circle-1: linear-gradient(160deg, #2b2670, #1f4f9a);
+  --hero-circle-2: linear-gradient(160deg, #2a3280, #1b1e45);
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+  font-family: 'Poppins', sans-serif !important;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+
+// Global typography application across all elements and form controls
+*,
+*::before,
+*::after {
+  font-family: 'Poppins', sans-serif;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+// Preserve icon fonts and monospace code blocks
+.material-symbols-outlined,
+.material-symbols-rounded,
+.material-symbols-sharp,
+.material-icons,
+mat-icon,
+[class*='material-symbols'],
+[class*='material-icons'],
+[class^='icon-'],
+[class*=' fa-'],
+[class^='fa-'] {
+  font-family: 'Material Symbols Outlined', 'Material Icons' !important;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+.demo-modal-panel {
+  --mat-dialog-container-shape: 0;
+}

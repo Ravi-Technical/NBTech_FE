@@ -1,0 +1,115 @@
+<div class="hero-slider">
+  <!-- Track containing all slides -->
+  <div class="hero-slider__track">
+    @for (slide of slides; track slide.id; let i = $index) {
+      <article
+        class="hero-slide"
+        [class.is-active]="currentSlide() === i"
+        [attr.aria-hidden]="currentSlide() !== i"
+      >
+        <!-- Background Imagery & Overlays -->
+        <div class="hero-slide__media">
+          <img
+            [src]="slide.imageUrl"
+            [alt]="slide.imageAlt"
+            class="hero-slide__img"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="hero-slide__overlay-gradient"></div>
+          <div class="hero-slide__overlay-pattern"></div>
+        </div>
+
+        <!-- Slide Content -->
+        <div class="hero-slide__wrapper">
+          <div class="hero-slide__content">
+            <!-- Badge -->
+            <div class="hero-slide__badge">
+              <span class="badge__pulse"></span>
+              <span class="badge__text">{{ slide.badge }}</span>
+            </div>
+
+            <!-- Title & Subtitle -->
+            <h1 class="hero-slide__title">
+              {{ slide.title }}
+            </h1>
+
+            <p class="hero-slide__subtitle">
+              {{ slide.subtitle }}
+            </p>
+
+            <!-- Description -->
+            <p class="hero-slide__desc">
+              {{ slide.description }}
+            </p>
+
+            <!-- CTA Actions -->
+            <div class="hero-slide__actions">
+              <button
+                type="button"
+                class="btn btn--primary"
+                (click)="onPrimaryCta(slide)"
+              >
+                <span>{{ slide.primaryCtaText }}</span>
+                <svg
+                  class="btn__icon"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="4" y1="10" x2="16" y2="10"></line>
+                  <polyline points="10 4 16 10 10 16"></polyline>
+                </svg>
+              </button>
+
+              <a
+                [href]="slide.secondaryCtaLink"
+                (click)="onSecondaryCta(slide.secondaryCtaLink)"
+                class="btn btn--secondary"
+              >
+                <span>{{ slide.secondaryCtaText }}</span>
+                <svg
+                  class="btn__icon-arrow"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  aria-hidden="true"
+                >
+                  <path d="M6 3.5l4.5 4.5L6 12.5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+
+  <!-- Left / Right Navigation Arrows -->
+  <button
+    type="button"
+    class="nav-arrow nav-arrow--prev"
+    (click)="prevSlide()"
+    aria-label="Previous Slide"
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+
+  <button
+    type="button"
+    class="nav-arrow nav-arrow--next"
+    (click)="nextSlide()"
+    aria-label="Next Slide"
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+</div>
