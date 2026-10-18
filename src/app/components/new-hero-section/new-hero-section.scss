@@ -16,7 +16,7 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 10rem 0 150px;
+  padding: 14rem 0 150px;
   color: #fff;
   background: var(--navy-900);
 }
@@ -70,7 +70,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 12px 14px;
-  margin: 0 0 28px;
+  margin: -35px 0 28px;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -397,7 +397,7 @@
   line-height: 1.6;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-text-muted, #53607f);
+  color: var(--color-surface);
 }
 
 .trusted__logos {
