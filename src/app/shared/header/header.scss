@@ -93,6 +93,7 @@ a.brand {
     background: var(--hdr-surface);
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 10px 1px 12px #ddd;
 }
 
 :host(.is-scrolled) .header {
@@ -269,11 +270,11 @@ a.brand {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
+    height: 30px;
     padding: 0 18px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 400;
     white-space: nowrap;
     transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 }
