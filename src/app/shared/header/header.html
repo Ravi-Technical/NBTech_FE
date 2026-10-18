@@ -33,13 +33,13 @@
             <div class="panel__grid" [class.panel__grid--single]="item.groups.length === 1">
               @for (group of item.groups; track group.title) {
               <section class="panel__group">
-                <h3 class="panel__title">{{ group.title }}</h3>
+                <!-- <h3 class="panel__title">{{ group.title }}</h3> -->
                 <ul class="panel__links">
                   @for (link of group.links; track link.route) {
                   <li>
                     <a class="panel__link" [routerLink]="link.route" (click)="closeAll()">
                       <span class="panel__label">{{ link.label }}</span>
-                      <span class="panel__desc">{{ link.description }}</span>
+                      <!-- <span class="panel__desc">{{ link.description }}</span> -->
                     </a>
                   </li>
                   }

@@ -59,17 +59,17 @@ export class Header {
           title: 'Platform',
           links: [
             {
-              label: 'Cloud Infrastructure',
+              label: 'ERP Development',
               description: 'Managed compute, storage and networking.',
               route: '/products/cloud',
             },
             {
-              label: 'DevOps Pipelines',
+              label: 'CRM Development',
               description: 'Build, test and ship with automated CI/CD.',
               route: '/products/devops',
             },
             {
-              label: 'Observability',
+              label: 'SEO & Analytics',
               description: 'Logs, metrics and traces in one place.',
               route: '/products/observability',
             },
@@ -79,17 +79,17 @@ export class Header {
           title: 'Security & data',
           links: [
             {
-              label: 'Identity & Access',
+              label: 'WebSite Development',
               description: 'Single sign-on, MFA and role-based access.',
               route: '/products/identity',
             },
             {
-              label: 'Threat Detection',
+              label: 'Brand Promotion',
               description: 'Find and respond to risks in real time.',
               route: '/products/security',
             },
             {
-              label: 'Data Platform',
+              label: 'Logo Design',
               description: 'Pipelines, warehousing and analytics.',
               route: '/products/data',
             },

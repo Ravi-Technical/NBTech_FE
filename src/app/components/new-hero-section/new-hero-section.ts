@@ -55,9 +55,9 @@ export class NewHeroSection {
 
   protected readonly stats: Stat[] = [
     { value: '24/7', label: 'Support desk coverage' },
-    { value: '[100+]', label: 'Projects delivered' },
-    { value: '[50+]', label: 'Clients served' },
-    { value: '[20+]', label: 'Years of experience' },
+    { value: '100+', label: 'Projects delivered' },
+    { value: '50+', label: 'Clients served' },
+    { value: '20+', label: 'Years of experience' },
   ];
 
   /** Placeholder slots, replace with real <img> logos later */

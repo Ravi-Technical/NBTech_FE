@@ -47,10 +47,12 @@ html[data-theme='light'] {
   --color-surface: #061132;         // cards, dialogs, header
   --color-surface-raised: #ffffff;  // dropdowns, popovers
   --color-hover: #1a2852;           // hover background on rows, menu items
+  
 
   // Borders
   --color-border: #d9dcf5;
   --color-border-strong: #b8bde6;   // inputs, outlined buttons
+  --color-dropdown-menu:#333;
 
   // Text
   --color-text: #fff;

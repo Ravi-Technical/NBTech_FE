@@ -16,7 +16,7 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 96px 0 150px;
+  padding: 10rem 0 150px;
   color: #fff;
   background: var(--navy-900);
 }
@@ -362,7 +362,7 @@
 
 .stats__item {
   padding: 28px 28px 26px;
-
+  text-align: center;
   & + & {
     border-left: 1px solid var(--color-border, #e3e7f3);
   }

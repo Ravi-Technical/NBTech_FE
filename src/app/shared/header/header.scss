@@ -286,21 +286,22 @@ a.brand {
     margin: 0 0 8px 10px;
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--hdr-slate);
+    color: var( --color-dropdown-menu) !important;
 }
 
 .panel__link {
     display: block;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 8px; 
+    font-size: 0.95rem !important;font-weight: 400 !important;
     transition: background-color 0.15s;
-
+     color: var( --color-dropdown-menu);
     &:hover {
         background: var(--hdr-wash);
     }
 
     &:hover .panel__label {
-        color: var(--hdr-accent);
+        color: var(--color-text);
     }
 }
 
@@ -316,7 +317,7 @@ a.brand {
     margin-top: 2px;
     font-size: 0.85rem;
     line-height: 1.4;
-    color: var(--hdr-slate);
+    color: var( --color-dropdown-menu);
 }
 
 @keyframes panel-in {
